@@ -1,37 +1,86 @@
-const currencyEl_one = document.querySelector('#currency-one');
-const currencyEl_two = document.querySelector('#currency-two');
-const amountEl_one = document.querySelector('#amount-one');
-const amountEl_two = document.querySelector('#amount-two');
-const rateEl = document.querySelector('#rate');
-const swapEl = document.querySelector('#swap');
+const main = document.querySelector('#main');
+const addUserBtn = document.querySelector('#add-user');
+const doubleBtn = document.querySelector('#double');
+const showMilBtn = document.querySelector('#show-millionaires');
+const sortBtn = document.querySelector('#sort');
+const calculateBtn = document.querySelector('#calculate-wealth');
+const contentHeight = main.scrollHeight;
 
-// Fetch exchange rates and update the DOM
-function calculate() {
-  const currency_one = currencyEl_one.value;
-  const currency_two = currencyEl_two.value;
-  const myCurrentAPIkey = 'yours_api_key'; // MUST BE REPLACED
+let data = [];
 
-  fetch(
-    `https://v6.exchangerate-api.com/v6/${myCurrentAPIkey}/latest/${currency_one}`
-  )
-    .then(res => res.json())
-    .then(data => {
-      const rate = data.conversion_rates[currency_two];
-      rateEl.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
-      amountEl_two.value = (amountEl_one.value * rate).toFixed(2);
-    });
+// Fetch Random User and add money
+async function getRandomUser() {
+  const res = await fetch('https://randomuser.me/api');
+  const data = await res.json();
+  const user = data.results[0];
+  const newUser = {
+    name: `${user.name.first} ${user.name.last}`,
+    get money() {
+      return this._money.toLocaleString('cs-CZ', {
+        style: 'currency',
+        currency: 'CZK',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+        useGrouping: true,
+      });
+    },
+    _money: Math.floor(Math.random() * 10000000),
+  };
+  addData(newUser);
+  checkNumOfPerson();
 }
 
-// Event listeners
-currencyEl_one.addEventListener('change', calculate);
-amountEl_one.addEventListener('input', calculate);
-currencyEl_two.addEventListener('change', calculate);
-amountEl_two.addEventListener('input', calculate);
-swapEl.addEventListener('click', () => {
-  const temp = currencyEl_one.value;
-  currencyEl_one.value = currencyEl_two.value;
-  currencyEl_two.value = temp;
-  calculate();
-});
+// Double values
+function doubleMoney() {
+  data = data.map(user => {
+    return {
+      ...user,
+      _money: user._money * 2,
+      get money() {
+        return this._money.toLocaleString('cs-CZ', {
+          style: 'currency',
+          currency: 'CZK',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+          useGrouping: true,
+        });
+      },
+    };
+  });
 
-calculate();
+  updateDOM();
+}
+
+// Add new obj to data arr
+function addData(obj) {
+  data.push(obj);
+  updateDOM();
+}
+
+// Update DOM
+function updateDOM(providedData = data) {
+  // Clear main div
+  main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
+  providedData.forEach(item => {
+    const element = document.createElement('div');
+    element.classList.add('person');
+    element.innerHTML = `<strong>${item.name}</strong> ${item.money}`;
+    main.appendChild(element);
+  });
+}
+
+// CSS styles in scrollbar
+function checkNumOfPerson() {
+  if (data.length > 6) {
+    main.classList.add('scrollable');
+  } else {
+    main.classList.remove('scrollable');
+  }
+}
+
+// Event Listeners.
+addUserBtn.addEventListener('click', getRandomUser);
+doubleBtn.addEventListener('click', doubleMoney);
+getRandomUser();
+getRandomUser();
+getRandomUser();

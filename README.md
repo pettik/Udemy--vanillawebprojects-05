@@ -1,23 +1,24 @@
-# Udemy--vanillawebprojects-04
+# Udemy--vanillawebprojects-05
 
-**The fourth** of a series of **20 small projects** in **Vanilla JavaScript** from the [**Udemy course**](https://www.udemy.com/course/web-projects-with-vanilla-javascript/) by author [Brad Traversy](https://www.traversymedia.com/) with this [Brad's original GitHub repository](https://github.com/bradtraversy/vanillawebprojects).
+**The fifth** of a series of **20 small projects** in **Vanilla JavaScript** from the [**Udemy course**](https://www.udemy.com/course/web-projects-with-vanilla-javascript/) by author [Brad Traversy](https://www.traversymedia.com/) with this [Brad's original GitHub repository](https://github.com/bradtraversy/vanillawebprojects).
 
-# 04: Exchange rate
+# 05: DOM Array Methods Project
 
-Select countries to get the exchange rate for a specific amount
+Project to teach high order array methods and DOM manipulation
 
 ## Project Specifications
 
-- Display UI with 2 select lists for countries and 2 inputs for amounts
-- Fetch exchange rates from API (https://api.exchangerate-api.com)
-- Display the values for both countries
-- Update values on amount change
-- Swap country rates
+- Fetch random users from the [randomuser.me](https://randomuser.me/) API
+- Use **forEach()** to loop and output user/wealth
+- Use **map()** to double wealth
+- Use **filter()** to filter only millionaires
+- Use **sort()** to sort by wealth
+- Use **reduce()** to add all wealth
 
 ## Original preview
 
 <div style="text-align:center;">
-    <img src="./img/04_preview.png" alt="Original solution preview">
+    <img src="./img/05_preview.png" alt="Original solution preview">
 </div>
 
 ## My solution preview
