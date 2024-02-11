@@ -30,8 +30,8 @@ Project to teach high order array methods and DOM manipulation
 ## My solution features
 
 - Custom **UI/UX design**
-- My **FREE API KEY** is no longer working (must be replaced - after your registration on [https://app.exchangerate-api.com/](https:/********/app.exchangerate-api.com/) ) -> replace "const myCurrentAPIkey = ' \*\* \*\* \*\* \*\* \*\* ** ' in **script.js\*\* .
 - **FontAwesome** icons
+- Converted to local currency (**CZK - Kč**) and local money amount formatting.
 
 # Author
 
