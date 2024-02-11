@@ -51,6 +51,33 @@ function doubleMoney() {
   updateDOM();
 }
 
+// Sort users by richest
+function sortByRichest() {
+  data.sort((a, b) => b._money - a._money);
+  updateDOM();
+}
+
+// Filter only millionaries $$$
+function showMillionaires() {
+  data = data.filter(user => user._money > 1000000);
+  updateDOM();
+}
+
+// Calculate the total wealth
+function calculateWealth() {
+  const wealth = data.reduce((acc, user) => (acc += user._money), 0);
+  const formattedWealth = wealth.toLocaleString('cs-CZ', {
+    style: 'currency',
+    currency: 'CZK',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+    useGrouping: true,
+  });
+  const wealthEl = document.createElement('div');
+  wealthEl.innerHTML = `<h3>Total Wealth: <strong>${formattedWealth}</strong></h3>`;
+  main.append(wealthEl);
+}
+
 // Add new obj to data arr
 function addData(obj) {
   data.push(obj);
@@ -65,13 +92,20 @@ function updateDOM(providedData = data) {
     const element = document.createElement('div');
     element.classList.add('person');
     element.innerHTML = `<strong>${item.name}</strong> ${item.money}`;
-    main.appendChild(element);
+    main.append(element);
   });
+}
+
+// Initialization
+function init() {
+  getRandomUser();
+  getRandomUser();
+  getRandomUser();
 }
 
 // CSS styles in scrollbar
 function checkNumOfPerson() {
-  if (data.length > 6) {
+  if (data.length > 7) {
     main.classList.add('scrollable');
   } else {
     main.classList.remove('scrollable');
@@ -81,6 +115,9 @@ function checkNumOfPerson() {
 // Event Listeners.
 addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
-getRandomUser();
-getRandomUser();
-getRandomUser();
+sortBtn.addEventListener('click', sortByRichest);
+showMilBtn.addEventListener('click', showMillionaires);
+calculateBtn.addEventListener('click', calculateWealth);
+
+// Start APP
+init();

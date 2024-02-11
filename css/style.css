@@ -48,7 +48,7 @@ body {
 }
 
 aside {
-  padding: 10px 20px;
+  padding: 0 20px 0 0;
   width: 250px;
   border-right: 1px solid #111;
 }
@@ -57,7 +57,7 @@ button {
   background-color: #fff;
   border: none;
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding-block: 0.75rem;
   margin-bottom: 1rem;
   display: inline-flex;
   align-items: center;
@@ -75,9 +75,13 @@ button:hover {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
+button:last-of-type {
+  margin-bottom: 0;
+}
+
 main {
   flex: 1;
-  padding: 10px 20px;
+  padding: 0 20px;
   overflow-y: hidden;
 }
 
@@ -96,8 +100,8 @@ h2 {
 }
 
 h3 {
-  background-color: #fff;
-  border-bottom: 1px solid #111;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #111;
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
