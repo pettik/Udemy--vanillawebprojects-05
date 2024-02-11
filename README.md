@@ -23,8 +23,8 @@ Project to teach high order array methods and DOM manipulation
 
 ## My solution preview
 
-<div style="text-align:center;">
-    <img width="100%" src="./img/my-solution-preview.png" alt="My solution preview">
+<div style="text-align:center;display:flex; justify-content:center;" >
+    <img src="./img/my-solution-preview.png" alt="My solution preview">
 </div>
 
 ## My solution features
