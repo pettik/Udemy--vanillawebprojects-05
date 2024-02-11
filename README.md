@@ -23,7 +23,8 @@ Project to teach high order array methods and DOM manipulation
 
 ## My solution preview
 
-<div style="text-align:center;display:flex; justify-content:center;" >
+<div style="text-align:center;display:flex; justify-content:center;background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);" >
     <img src="./img/my-solution-preview.png" alt="My solution preview">
 </div>
 
